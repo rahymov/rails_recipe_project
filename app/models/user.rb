@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :validatable,
          :omniauth_providers => [:facebook]
    def self.new_with_session(params, session)
@@ -18,5 +18,6 @@ class User < ApplicationRecord
        user.password = Devise.friendly_token[0,20]
        # user.name = auth.info.name   # assuming the user model has a name
        # user.image = auth.info.image # assuming the user model has an image
+     end
    end
 end
