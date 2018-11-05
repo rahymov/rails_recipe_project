@@ -12,9 +12,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.5'
 gem 'omniauth-facebook'
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+# gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

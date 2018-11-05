@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsRecipeProject</title>
+    <title>Recipes</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -16,5 +16,6 @@
   			<%= content_tag(:div, msg, class: "alert alert-info") %>
     	<% end %>
     <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
