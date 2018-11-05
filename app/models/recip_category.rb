@@ -1,0 +1,2 @@
+class RecipCategory < ApplicationRecord
+end
