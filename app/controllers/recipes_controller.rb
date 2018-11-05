@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_paramsm only: [:show, :edit, :update, :destroy]
+  before_action :set_params, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! , except: [:show, :index]
   def index
     @recipes = Recipe.all
@@ -10,11 +10,13 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = current_user.recipes.build(recipe_params)
-		if @recipe.save
-			redirect_to @recipe
-		else
-			render 'new'
+    if current_user
+      @recipe = current_user.recipes.build(recipe_params)
+  		if @recipe.save
+  			redirect_to @recipe
+  		else
+  			render 'new'
+      end
     end
   end
 
@@ -25,15 +27,21 @@ class RecipesController < ApplicationController
   end
 
   def update
-    if @recipe.update(recipe_params)
-			redirect_to @recipe
-		else
-			render 'edit'
-		end
+    if current_user
+      if @recipe.update(recipe_params)
+  			redirect_to @recipe
+  		else
+  			render 'edit'
+  		end
+    end
   end
   def destroy
-    @recipe.destroy
-    redirect_to root_path, notice: "Successfully deleted recipe"
+    if current_user
+      @recipe.destroy
+      redirect_to root_path, notice: "Successfully deleted recipe"
+    else
+      redirect_to recipes_path
+    end
   end
 
   private
